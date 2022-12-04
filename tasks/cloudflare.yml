@@ -8,8 +8,8 @@
 - include_role:
     name: bviktor.firewalld
   vars:
-    - zone: 'cloudflare'
-    - source: "{{ item }}"
+    zone: 'cloudflare'
+    source: "{{ item }}"
   loop: "{{ cloudflare_ipv4.content.split() }}"
 
 - name: Obtain v6 Cloudflare IPs
@@ -21,13 +21,13 @@
 - include_role:
     name: bviktor.firewalld
   vars:
-    - zone: 'cloudflare'
-    - source: "{{ item }}"
+    zone: 'cloudflare'
+    source: "{{ item }}"
   loop: "{{ cloudflare_ipv6.content.split() }}"
 
 # we could define service in the above include, but it's faster to enable it only once instead of all elements in the loop
 - include_role:
     name: bviktor.firewalld
   vars:
-    - zone: 'cloudflare'
-    - service: 'https'
+    zone: 'cloudflare'
+    service: 'https'
