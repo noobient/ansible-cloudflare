@@ -2,7 +2,7 @@
 - name: Obtain v4 Cloudflare IPs
   uri:
     url: https://www.cloudflare.com/ips-v4
-    return_content: yes
+    return_content: true
   register: cloudflare_ipv4
 
 - include_role:
@@ -15,7 +15,7 @@
 - name: Obtain v6 Cloudflare IPs
   uri:
     url: https://www.cloudflare.com/ips-v6
-    return_content: yes
+    return_content: true
   register: cloudflare_ipv6
 
 - include_role:
