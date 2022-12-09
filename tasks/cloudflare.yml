@@ -39,6 +39,17 @@
 - debug:
     msg: "{{ fwd_state4 }}"
 
+- name: Check firewalld state 5
+  shell:
+    cmd: sysctl -a 2>/dev/null | grep disable_ipv6
+  changed_when: false
+  failed_when: false
+  register: fwd_state5
+
+- debug:
+    msg: "{{ fwd_state5 }}"
+
+
 - name: Obtain v4 Cloudflare IPs
   uri:
     url: https://www.cloudflare.com/ips-v4
