@@ -1,55 +1,4 @@
 ---
-- name: Check firewalld state
-  command:
-    cmd: systemctl status firewalld
-  changed_when: false
-  failed_when: false
-  register: fwd_state
-
-- debug:
-    msg: "{{ fwd_state }}"
-
-- name: Check firewalld state 2
-  command:
-    cmd: cat /var/log/firewalld
-  changed_when: false
-  failed_when: false
-  register: fwd_state2
-
-- debug:
-    msg: "{{ fwd_state2 }}"
-
-- name: Check firewalld state 3
-  command:
-    cmd: ip6tables --version
-  changed_when: false
-  failed_when: false
-  register: fwd_state3
-
-- debug:
-    msg: "{{ fwd_state3 }}"
-
-- name: Check firewalld state 4
-  command:
-    cmd: cat /sys/module/ipv6/parameters/disable
-  changed_when: false
-  failed_when: false
-  register: fwd_state4
-
-- debug:
-    msg: "{{ fwd_state4 }}"
-
-- name: Check firewalld state 5
-  shell:
-    cmd: sysctl -a 2>/dev/null | grep disable_ipv6
-  changed_when: false
-  failed_when: false
-  register: fwd_state5
-
-- debug:
-    msg: "{{ fwd_state5 }}"
-
-
 - name: Obtain v4 Cloudflare IPs
   uri:
     url: https://www.cloudflare.com/ips-v4
@@ -69,12 +18,20 @@
     return_content: true
   register: cloudflare_ipv6
 
+- name: Check if IPv6 is usable in firewalld
+  command:
+    cmd: grep 'ip6tables not usable, disabling IPv6 firewall' /var/log/firewalld
+  changed_when: false
+  failed_when: false
+  register: firewalld_ipv6
+
 - include_role:
     name: bviktor.firewalld
   vars:
     zone: 'cloudflare'
     source: "{{ item }}"
   loop: "{{ cloudflare_ipv6.content.split() }}"
+  when: firewalld_ipv6.rc != 0
 
 # we could define service in the above include, but it's faster to enable it only once instead of all elements in the loop
 - include_role:
