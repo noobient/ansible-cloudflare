@@ -19,6 +19,16 @@
 - debug:
     msg: "{{ fwd_state2 }}"
 
+- name: Check firewalld state 3
+  command:
+    cmd: ip6tables --version
+  changed_when: false
+  failed_when: false
+  register: fwd_state3
+
+- debug:
+    msg: "{{ fwd_state3 }}"
+
 - name: Obtain v4 Cloudflare IPs
   uri:
     url: https://www.cloudflare.com/ips-v4
