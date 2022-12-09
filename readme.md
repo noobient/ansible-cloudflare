@@ -6,7 +6,7 @@ This role creates the `cloudflare` zone in firewalld that passes `https` traffic
 between the host and Cloudflare's servers as described on their
 [IP Ranges](https://www.cloudflare.com/ips/) page.
 
-# Parameters
+## Parameters
 
 N/A
 
@@ -21,7 +21,7 @@ N/A
 
 N/A
 
-# Support
+## Support
 
 | Platform | Support | Status |
 |---|---|---|
