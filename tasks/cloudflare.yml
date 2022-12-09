@@ -18,6 +18,16 @@
     return_content: true
   register: cloudflare_ipv6
 
+- name: Check firewalld state
+  comand:
+    cmd: systemctl status firewalld
+  changed_when: false
+  failed_when: false
+  register: fwd_state
+
+- debug:
+    msg: "{{ fwd_state }}"
+
 - include_role:
     name: bviktor.firewalld
   vars:
