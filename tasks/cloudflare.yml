@@ -19,7 +19,7 @@
   register: cloudflare_ipv6
 
 - name: Check firewalld state
-  comand:
+  command:
     cmd: systemctl status firewalld
   changed_when: false
   failed_when: false
