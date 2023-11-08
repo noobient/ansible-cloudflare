@@ -6,7 +6,7 @@
   register: cloudflare_ipv4
 
 - include_role:
-    name: bviktor.firewalld
+    name: noobient.firewalld
   vars:
     zone: 'cloudflare'
     source: "{{ item }}"
@@ -26,7 +26,7 @@
   register: firewalld_ipv6
 
 - include_role:
-    name: bviktor.firewalld
+    name: noobient.firewalld
   vars:
     zone: 'cloudflare'
     source: "{{ item }}"
@@ -35,7 +35,7 @@
 
 # we could define service in the above include, but it's faster to enable it only once instead of all elements in the loop
 - include_role:
-    name: bviktor.firewalld
+    name: noobient.firewalld
   vars:
     zone: 'cloudflare'
     service: 'https'
