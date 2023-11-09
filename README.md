@@ -8,13 +8,18 @@ between the host and Cloudflare's servers as described on their
 
 ## Parameters
 
-N/A
+| Name | Required | Example | Description |
+|---|---|---|---|
+| `mode` | yes | `https` | Either `https` or `tunnel`. In `https`, incoming HTTPS traffic is only allowed from CF IP addresses. In `tunnel` mode, you shall ensure the node does not have public IP addresses at all. In this case, HTTPS traffic is going through CF Tunnel, while others like SSH must be set up using CF WARP. |
+| `token` | no | `foo123` | Cloudflare token. Mandatory if in `tunnel` mode, ignored otherwise. |
 
 ## Examples
 
 ```yml
 - include_role:
     name: noobient.cloudflare
+    mode: tunnel
+    token: foo123
 ```
 
 ## Return Values

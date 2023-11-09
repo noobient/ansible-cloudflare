@@ -1,2 +1,6 @@
 ---
-- include_tasks: cloudflare.yml
+- include_tasks: https.yml
+  when: mode == 'https'
+
+- include_tasks: tunnel.yml
+  when: mode == 'tunnel'

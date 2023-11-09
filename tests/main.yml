@@ -1,5 +1,20 @@
 ---
 - hosts: 127.0.0.1
   tasks:
+    - name: Install nginx
+      package:
+        name: nginx
+        state: latest
+
+    - name: Enable and start nginx
+      systemd:
+        name: nginx.service
+        state: started
+        enabled: true
+
     - include_role:
         name: "{{ playbook_dir.split('/')[:-1] | last }}"
+      vars:
+        #mode: tunnel
+        mode: https
+        token: foo

@@ -1,2 +1,4 @@
 ---
 - name: noobient.firewalld
+- name: noobient.thirdparty
+- name: noobient.update

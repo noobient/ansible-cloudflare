@@ -1,2 +1,4 @@
 ---
 - src: noobient.firewalld
+- src: noobient.thirdparty
+- src: noobient.update
