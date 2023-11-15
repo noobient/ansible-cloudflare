@@ -16,6 +16,8 @@ jobs:
       - name: Obtain sources
         uses: actions/checkout@v3
       - name: Test Galaxy role
+        env:
+          CF_Token: ${{ secrets.CF_Token }}
         run: >
             CONT_ID=$(podman run --rm -v ${{ github.workspace }}:/repo -v /sys/fs/cgroup:/sys/fs/cgroup:ro
             --tmpfs /tmp --tmpfs /run --privileged --detach bviktor/ansible-systemd-ubuntu:22.04) &&
