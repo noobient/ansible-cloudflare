@@ -1,0 +1,6 @@
+---
+- include_role:
+    name: "{{ playbook_dir.split('/')[:-1] | last }}"
+  vars:
+    mode: tunnel
+    token: "{{ lookup('ansible.builtin.env', 'CF_Token') }}"
