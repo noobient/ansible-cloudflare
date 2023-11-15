@@ -14,6 +14,9 @@
   template:
     src: cloudflared.service.j2
     dest: /etc/systemd/system/cloudflared.service
+    owner: root
+    group: root
+    mode: '0644'
 
 - name: Enable and start Cloudflare daemon
   systemd:

@@ -13,3 +13,4 @@ skip_list:
   - schema[meta] # TODO ansible-lint believes the official dependency syntax is wrong
   - meta-no-info # we leave platform empty
   - var-naming[no-role-prefix] # warns even for include_role vars
+  - var-naming[no-reserved] # TODO
