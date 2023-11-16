@@ -12,6 +12,7 @@ between the host and Cloudflare's servers as described on their
 |---|---|---|---|
 | `mode` | yes | `https` | Either `https` or `tunnel`. In `https`, incoming HTTPS traffic is only allowed from CF IP addresses. In `tunnel` mode, you shall ensure the node does not have public IP addresses at all. In this case, HTTPS traffic is going through CF Tunnel, while others like SSH must be set up using CF WARP. |
 | `token` | no | `foo123` | Cloudflare token. Mandatory if in `tunnel` mode, ignored otherwise. |
+| `family` | no | `ipv6` | Tunnel address family. Possible values are `ipv4`, `ipv6`, `auto`. Defaults to `auto`. If you're using IPv6, you're advised to set explicitly to `ipv6`, otherwise the connection will likely fail. |
 
 ## Examples
 
