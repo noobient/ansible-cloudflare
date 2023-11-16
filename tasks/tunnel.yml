@@ -1,8 +1,4 @@
 ---
-# It's all about security, so we might as well care
-- include_role:
-    name: noobient.update
-
 - include_role:
     name: noobient.thirdparty
   vars:
