@@ -1,0 +1,5 @@
+---
+- name: Restart Cloudflare daemon
+  systemd:
+    name: cloudflared.service
+    state: restarted
