@@ -2,9 +2,14 @@
 
 ## Synopsys
 
-This role creates the `cloudflare` zone in firewalld that passes `https` traffic
-between the host and Cloudflare's servers as described on their
+This role puts your server behind Cloudflare. Two options are supported:
+
+-  HTTPS traffic is allowed in the new `cloudflare` zone in firewalld, which is
+restricted to Cloudflare's servers as described on their
 [IP Ranges](https://www.cloudflare.com/ips/) page.
+- Cloudflare Tunnel is installed on the service with the token provided. In this
+case, you need to configure your tunnel in the Cloudflare dashboard to select which
+services to be allowed.
 
 ## Parameters
 
@@ -19,8 +24,10 @@ between the host and Cloudflare's servers as described on their
 ```yml
 - include_role:
     name: noobient.cloudflare
+  vars:
     mode: tunnel
     token: foo123
+    family: ipv6
 ```
 
 ## Return Values
