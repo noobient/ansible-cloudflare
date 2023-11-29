@@ -7,4 +7,5 @@ rules:
   comments:
     min-spaces-from-content: 1
     require-starting-space: false
+  comments-indentation: disable
   line-length: disable

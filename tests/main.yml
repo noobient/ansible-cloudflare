@@ -1,6 +1,6 @@
 ---
 - hosts: 127.0.0.1
   tasks:
-    - include_tasks: nginx.yml
+#    - include_tasks: nginx.yml
     - include_tasks: tunnel.yml
     - include_tasks: https.yml
