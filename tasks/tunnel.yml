@@ -3,7 +3,7 @@
     name: noobient.thirdparty
   vars:
     name: Cloudflare Tunnel
-    gpg_url: "https://pkg.cloudflare.com/cloudflare-{% if ansible_pkg_mgr == 'dnf' %}ascii-pubkey{% else %}main{% endif %}.gpg"
+    gpg_url: "https://pkg.cloudflare.com/cloudflare-{% if ansible_os_family == 'RedHat' %}ascii-pubkey{% else %}main{% endif %}.gpg"
     repo_file: cloudflared
     package: cloudflared
 
